@@ -1,6 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
-  margin: 0 auto;
-  width: 500px;
-  height: 500px;
-  background-color: aqua;
+  margin: 100px auto;
+  width: 600px;
+  height: 700px;
+  background-color: rgb(0, 0, 66);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.weather-form-container {
+  height: 50px;
+  width: 100%;
+}
+
+.weather-data-container {
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  grid-template-rows: 250px repeat(2, 200px);
+}
+
+.weather-data-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-data-container h2 {
+  color: white;
+  padding-bottom: 5px;
+}
+
+.weather-data-container p {
+  color: white;
+  font-size: 1.2rem;
 }
