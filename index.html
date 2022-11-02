@@ -9,25 +9,29 @@
   <title>Document</title>
 </head>
 <body>
+  <div>
+    <h1 class="title2">Weather App</h1>
+  </div>
   <div id="container" class="container">
     <div id="weather-form-container" class="weather-form-container">
-      <input type="text" name="" id="">
-      <button>Click me!</button>
+      <div>
+        <input type="text" name="" id="">
+        <button>Click me!</button>
+      </div>
+      <div>
+        <label for="imperial">Fahrenheit</label>
+        <input type="radio" id="imperial" name="unit" value="imperial" checked>
+        <label for="metric">Celsius</label>
+        <input type="radio" id="metric" name="unit" value="metric">
+      </div>
     </div>
     <div id="weather-data-container" class="weather-data-container">
-      <div id="location">
+      <div id="title" class="title">
         <h2></h2>
         <p></p>
-      </div>
-      <div id="description">
-        <h2></h2>
         <p></p>
       </div>
-      <div id="temperature">
-        <h2></h2>
-        <p></p>
-      </div>
-      <div id="feels_like">
+      <div id="feels-like">
         <h2></h2>
         <p></p>
       </div>
@@ -35,7 +39,7 @@
         <h2></h2>
         <p></p>
       </div>
-      <div id="wind_speed">
+      <div id="wind-speed">
         <h2></h2>
         <p></p>
       </div>
