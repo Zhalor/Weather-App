@@ -1,4 +1,4 @@
-async function getWeather(city, unit) {
+async function fetchWeather(city, unit) {
     const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=03bba837610ec0c4d9d49862f2c39baf&units=${unit}`);
     const data = await response.json();
     const weather = {
@@ -116,11 +116,8 @@ function formatData(value, key, unit) {
   return value
 }
 
-const btn = document.querySelector('button');
-const input = document.querySelector('input[type="text"]');
-btn.addEventListener('click', () => {
-  let unit = document.querySelector('input[type=radio]:checked').value;
-  getWeather(input.value.trim(), unit).then(weatherInfo => {
+function getWeather(city, unit) {
+  fetchWeather(city, unit).then(weatherInfo => {
     let formattedWeatherInfo = {};
     for(let [key, value] of Object.entries(weatherInfo)) {
       let data = formatData(value, key, unit);
@@ -133,5 +130,25 @@ btn.addEventListener('click', () => {
     document.getElementById('location').innerText = 'City not found';
     document.getElementById('time').innerText = '';
   });
+}
+
+const btn = document.querySelector('button');
+const celsiusBtn = document.getElementById('celsius');
+const fahrenheitBtn = document.getElementById('fahrenheit');
+const input = document.querySelector('input[type="text"]');
+btn.addEventListener('click', () => {
+  let unit = document.querySelector('input[type=radio]:checked').value;
+  getWeather(input.value.trim(), unit);
 });
 
+celsiusBtn.addEventListener('click', () => {
+  const location = document.getElementById('location');
+  const city = location.innerText.split(',');
+  getWeather(city[0], 'metric');
+});
+
+fahrenheitBtn.addEventListener('click', () => {
+  const location = document.getElementById('location');
+  const city = location.innerText.split(',');
+  getWeather(city[0], 'imperial');
+});
