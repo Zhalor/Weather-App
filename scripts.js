@@ -75,14 +75,17 @@ function formatData(value, key, unit) {
         let utcHours = date.getUTCHours();
         let minutes = date.getUTCMinutes();
         let locationHours = (value / 60) / 60;
-        let hours = locationHours + utcHours;
+        let hours = locationHours > 0 ? locationHours + utcHours : "-" + (Math.abs(locationHours) - utcHours);
         if(hours > 24) {
           hours = hours - 24;
+        } else if(hours < 0) {
+          hours = 24 - Math.abs(hours) 
         }
         if(minutes < 10) {
           minutes = `0${minutes}`;
         }
-        return `${hours}:${minutes}`;
+        const localTime = hours > 12 ? `${hours - 12}:${minutes} PM` : `${hours}:${minutes} AM`;
+        return localTime;
     }
   } else {
     switch(key) {
@@ -103,14 +106,17 @@ function formatData(value, key, unit) {
         let utcHours = date.getUTCHours();
         let minutes = date.getUTCMinutes();
         let locationHours = (value / 60) / 60;
-        let hours = locationHours + utcHours;
+        let hours = locationHours > 0 ? locationHours + utcHours : "-" + (Math.abs(locationHours) - utcHours);
         if(hours > 24) {
           hours = hours - 24;
+        } else if(hours < 0) {
+          hours = 24 - Math.abs(hours) 
         }
         if(minutes < 10) {
           minutes = `0${minutes}`;
         }
-        return `${hours}:${minutes}`;
+        const localTime = hours > 12 ? `${hours - 12}:${minutes} PM` : `${hours}:${minutes} AM`;
+        return localTime;
     }
   }
   return value
